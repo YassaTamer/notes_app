@@ -1,6 +1,4 @@
-import 'dart:ffi';
 import 'package:flutter/material.dart';
-import 'package:notes_app/constants.dart';
 import 'package:notes_app/widgets/custom_botton.dart';
 import 'package:notes_app/widgets/custom_text_field.dart';
 
