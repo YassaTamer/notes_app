@@ -7,19 +7,22 @@ import 'package:notes_app/models/note_model.dart';
 part 'notes_state.dart';
 
 class NotesCubit extends Cubit<NotesState> {
-  NotesCubit() : super(NotesInitial());
+  NotesCubit() : super(NotesInitial()) {
+    // Load notes immediately when the cubit is created so the UI
+    // shows stored notes on app startup.
+    fetchAllNotes();
+  }
   List<NoteModel>? notes;
   fetchAllNotes() async {
     try {
-  var notesBox = Hive.box<NoteModel>(kNotesBox);
-  notes = notesBox.values.toList();
-  emit(NotesSuccess());
+      var notesBox = Hive.box<NoteModel>(kNotesBox);
+      notes = notesBox.values.toList();
+      emit(NotesSuccess());
       print("✅ Notes fetched: ${notes!.length}");
-
-}  catch (e,s) {
-  // TODO
-   print("❌ Error in fetchAllNotes: $e");
-    print(s);
-}
+    } catch (e, s) {
+      // TODO
+      print("❌ Error in fetchAllNotes: $e");
+      print(s);
+    }
   }
 }
