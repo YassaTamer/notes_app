@@ -52,7 +52,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
             maxLines: 5,
             initialValue: widget.note.subTitle,
             onSaved: (value) {
-              content = value;
+              content = value; 
             },
             onChange: (value) {
               content = value;
